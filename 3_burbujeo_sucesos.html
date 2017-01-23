@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>DEW - Desarrollo Web Cliente</title>
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://bootswatch.com/darkly/bootstrap.min.css">
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- own css -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">
+                        <i class="fa fa-home" aria-hidden="true"></i> Home
+                    </a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="1_listas_niveles.html"><i class="fa fa-list-alt" aria-hidden="true"></i> Lista varios niveles<span class="sr-only">(current)</span></a></li>
+                        <li><a href="2_boton_inaccesible.html"><i class="fa fa-grav" aria-hidden="true"></i> Botón casi inaccesible</a></li>
+                        <li class="active"><a href="3_burbujeo_sucesos.html"><i class="fa fa-eercast" aria-hidden="true"></i> Burbujeo de sucesos</a></li>
+                    </ul>
+                </div>
+                <!--/.nav-collapse -->
+            </div>
+        </nav>
+        <br><br><br>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading"></div>
+                    <div class="panel-body">
+                        <button class="btn btn-info btn-block btn-sm" id="btn1" onclick="eventonclick(this, p1)" ondblclick="eventondblclick(this, p1)"><span class="size_40"><i class="fa fa-grav" aria-hidden="true"></span></i></button>
+                        <div id="p1" align="center"><i class="fa fa-grav" aria-hidden="true"></span></i></div>
+                        <button class="btn btn-info btn-block btn-sm" id="btn2" onclick="eventonclick(this, p2)" ondblclick="eventondblclick(this, p2)"><span class="size_40"><i class="fa fa-handshake-o" aria-hidden="true"></i></span></button>
+                        <div id="p2" align="center"><i class="fa fa-handshake-o" aria-hidden="true"></i></div>
+                        <button class="btn btn-info btn-block btn-sm" id="btn3" onclick="eventonclick(this, p3)" ondblclick="eventondblclick(this, p3)"><span class="size_40"><i class="fa fa-globe" aria-hidden="true"></i></span></button>
+                        <div id="p3" align="center"><i class="fa fa-globe" aria-hidden="true"></i></div>
+                        <button class="btn btn-info btn-block btn-sm" id="btn4" onclick="eventonclick(this, p4)" ondblclick="eventondblclick(this, p4)"><span class="size_40"><i class="fa fa-cube" aria-hidden="true"></i></span></button>
+                        <div id="p4" align="center"><i class="fa fa-cube" aria-hidden="true"></i></div>
+                    </div>
+                    <div class="panel-footer"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="form-group">
+                    <textarea class="form-control custom-control" rows="3" style="resize:none" id="txtarea"></textarea>
+                    <span class="input-group-addon btn btn-primary" onclick="copy()"><i class="fa fa-clipboard" aria-hidden="true"></i> Copy to clipboard</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var btn1 = document.getElementById('btn1');
+        var p1 = document.getElementById('p1');
+        var btn2 = document.getElementById('btn2');
+        var p2 = document.getElementById('p2');
+        var btn3 = document.getElementById('btn3');
+        var p3 = document.getElementById('p3');
+        var btn4 = document.getElementById('btn4');
+        var p4 = document.getElementById('p4');
+        var txtarea = document.getElementById('txtarea');
+
+        var classbutton = 'btn btn-info btn-block btn-sm disabled';
+
+        function eventonclick(btn, p) {
+            if (btn.style.background == 'rgb(231, 76, 60)') { // red
+                btn.style.background = "#e74c3c"; // red
+
+            } else if (btn.style.background == 'rgb(0, 188, 140)') { // green
+                btn.style.background = "#158cba"; // blue
+                p.style.background = "transparent";
+            } else {
+                btn.style.background = "#00bc8c"; // green
+                p.style.background = "skyblue";
+            }
+        }
+
+        function eventondblclick(btn, p) {
+            btn.style.background = "#e74c3c"; // red
+            p.style.background = "orange";
+
+            txt_p1 = p.innerHTML;
+            txtarea.innerHTML += txt_p1 + "\n";
+            btn.className = classbutton;
+        }
+
+        function copy() {
+            var text = document.getElementById('txtarea');
+            var range = document.createRange();
+
+            range.selectNode(text);
+            window.getSelection().addRange(range);
+            document.execCommand('copy');
+        }
+    </script>
+</body>

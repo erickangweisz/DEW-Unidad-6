@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>DEW - Desarrollo Web Cliente</title>
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://bootswatch.com/darkly/bootstrap.min.css">
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- own css -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="masthead">
+            <br><br>
+            <!-- Fixed navbar -->
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="index.html">
+                            <i class="fa fa-home" aria-hidden="true"></i> Home
+                        </a>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="active"><a href="1_listas_niveles.html"><i class="fa fa-list-alt" aria-hidden="true"></i> Lista varios niveles<span class="sr-only">(current)</span></a></li>
+                            <li><a href="2_boton_inaccesible.html"><i class="fa fa-grav" aria-hidden="true"></i> Botón casi inaccesible</a></li>
+                            <li><a href="3_burbujeo_sucesos.html"><i class="fa fa-eercast" aria-hidden="true"></i> Burbujeo de sucesos</a></li>
+                        </ul>
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+            </nav>
+        </div>
+        <br>
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="font_vampire" style="margin:0px; padding:0px;">VIDEOCLUB</h2>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div align="left">Servicios del videoclub
+                                <select name="servicios" onchange="cambiar()" id="select_servicios" class="form-control">
+                                    <option selected>Video</option>
+                                    <option>Discos</option>
+                                    <option>Juego</option>
+                                </select>
+                            </div>
+                            <br>
+                            <div align="left">Género
+                                <select name="genero" onchange="cambiarGenero()" id="select_genero" class="form-control">
+                                    <option selected>Humor</option>
+                                    <option>Drama</option>
+                                    <option>Ficción</option>
+                                    <option>Otros</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <br><br>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="comment">Selección:</label>
+                                <textarea class="form-control" rows="5" id="txtarea">
+                                </textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        var videos = ["Humor", "Drama", "Ficción", "Otros"];
+        var discos = ["Pop", "Rock", "Latino", "Otros"];
+        var juegos = ["Simulador", "Rol", "Medieval", "Otros"];
+
+        var txtarea = document.getElementById('txtarea');
+
+        var indexServicios = "";
+        var indexGenero = "";
+
+        var txtServicios = "";
+        var txtGenero = "";
+
+        var select_servicios = document.getElementById('select_servicios');
+        var select_genero = document.getElementById('select_genero');
+
+        function cambiar() {
+            indexServicios = select_servicios.selectedIndex;
+            selectOptions(indexServicios);
+            cambiarServicio();
+        }
+
+        function selectOptions(index) {
+            for (var i = 0, l = select_genero.length; i < l; i++) {
+                select_genero.remove(select_genero.i);
+            }
+            switch (index) {
+                case 0:
+                    for (var i = 0; i < videos.length; i++) {
+                        select_genero.options.add(new Option(videos[i]));
+                    }
+                    break;
+                case 1:
+                    for (var i = 0; i < discos.length; i++) {
+                        select_genero.options.add(new Option(discos[i]));
+                    }
+                    break;
+                case 2:
+                    for (var i = 0; i < juegos.length; i++) {
+                        select_genero.options.add(new Option(juegos[i]));
+                    }
+                    break;
+            }
+        }
+
+        function cambiarServicio() {
+            txtServicios = select_servicios.options[indexServicios].text + " --> ";
+            txtarea.innerHTML = txtServicios;
+            cambiarGenero();
+        }
+
+        function cambiarGenero() {
+            indexGenero = select_genero.selectedIndex;
+            txtGenero = select_genero.options[indexGenero].text;
+            txtarea.innerHTML = txtServicios + txtGenero;
+        }
+    </script>
+</body>

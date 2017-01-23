@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>DEW - Desarrollo Web Cliente</title>
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://bootswatch.com/darkly/bootstrap.min.css">
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="animate.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- own css -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body style="background-image: url('images/background.gif')">
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">
+                    <i class="fa fa-home" aria-hidden="true"></i> Home
+                </a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="1_listas_niveles.html"><i class="fa fa-list-alt" aria-hidden="true"></i> Lista varios niveles<span class="sr-only">(current)</span></a></li>
+                    <li class="active"><a href="2_boton_inaccesible.html"><i class="fa fa-grav" aria-hidden="true"></i> Botón casi inaccesible</a></li>
+                    <li><a href="3_burbujeo_sucesos.html"><i class="fa fa-eercast" aria-hidden="true"></i> Burbujeo de sucesos</a></li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </nav>
+    <br><br><br>
+    <img src="images/astroneer.gif" onmouseover="moveImg(this);" onclick="clickImage(this)" style="width: 78px; height: 161px; position:relative; left: 48%;" id="img_astro">
+
+    <img src="images/earth.gif" id="img_earth" onclick="imageClicked(this)" />
+    <img src="images/venus.gif" id="img_venus" onclick="imageClicked(this)" />
+    <img src="images/mercury.gif" id="img_mercury" onclick="imageClicked(this)" />
+    <img src="images/mars.gif" id="img_mars" onclick="imageClicked(this)" />
+    <img src="images/sun.gif" id="img_sun" onclick="imageClicked(this)" />
+
+    <img src="images/panel.png" style="width: 100%; height: 300px; position: relative; top: 430px; z-index: 3" />
+
+    <script type="text/javascript">
+        var img_astro = document.getElementById('img_astro');
+        var cont = 0;
+
+        function moveImg(img) {
+            var x = 1150,
+                y = 185;
+            newX = Math.floor(Math.random() * x);
+            newY = Math.floor(Math.random() * y) + 40;
+            img.style.position = "absolute";
+            img.style.left = newX + "px";
+            img.style.top = newY + "px";
+            resizeImage(img);
+        }
+
+        function resizeImage(img) {
+            var w = 78,
+                h = 161;
+            var newWidth = Math.floor((Math.random() * w) * 1.5) + 60;
+            var newHeight = Math.floor((Math.random() * h) * 1.5) + 124;
+            img.style.width = newWidth + 'px';
+            img.style.height = newHeight + 'px';
+        }
+
+        function clickImage(img) {
+            img.className = "animated lightSpeedOut";
+        }
+
+        function imageClicked(img) {
+            img.src = 'images/planet_touched.gif';
+            cont++;
+            if (cont === 3) {
+                img_astro.className = "animated zoomOutUp";
+            }
+        }
+    </script>
+</body>
+
+</html>

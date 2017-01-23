@@ -1,0 +1,79 @@
+/* navbar */
+
+.color_white {
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+.navbar-nav>li>a,
+.navbar-brand {
+    padding-top: 4px !important;
+    padding-bottom: 0 !important;
+    height: 28px;
+}
+
+.navbar {
+    min-height: 28px !important;
+}
+
+
+/* googlefonts */
+
+.font_vampire {
+    font-family: 'Vampiro One', cursive;
+}
+
+
+/* planets */
+
+#img_earth {
+    position: absolute;
+    left: 70%;
+    top: 60px;
+    z-index: 3;
+    width: 70px;
+    height: 70px;
+}
+
+#img_venus {
+    position: absolute;
+    left: 40%;
+    top: 180px;
+    z-index: 3;
+    width: 50px;
+    height: 50px;
+}
+
+#img_mercury {
+    position: absolute;
+    left: 10%;
+    top: 280px;
+    z-index: 3;
+    width: 55px;
+    height: 50px;
+}
+
+#img_mars {
+    position: absolute;
+    left: 90%;
+    top: 350px;
+    z-index: 3;
+    width: 30px;
+    height: 30px;
+}
+
+#img_sun {
+    position: absolute;
+    left: 67%;
+    top: 460px;
+    z-index: 3;
+    width: 60px;
+    height: 60px;
+}
+
+
+/* font-size */
+
+.size_40 {
+    font-size: 36px;
+}
